@@ -6,8 +6,8 @@
 
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 40px 20px;
+  background: linear-gradient(135deg, #2b2d33 0%, #bebebe 100%);
+  padding: 0;
 }
 
 .App-header {
@@ -40,27 +40,27 @@ h2 {
 
 .project-card {
   background: white;
-  border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 .project-card h3 {
-  color: #667eea;
-  font-size: 1.8rem;
+  color: #333;
+  font-size: 1.5rem;
   margin-bottom: 15px;
 }
 
 .project-card p {
-  color: #555;
+  color: #665;
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .project-card strong {
@@ -70,19 +70,163 @@ h2 {
 .project-card a {
   display: inline-block;
   margin-top: 15px;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 10px 20px;
+  background-color: #5865f2;
   color: white;
   text-decoration: none;
-  border-radius: 25px;
-  transition: transform 0.2s ease;
-  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
 .project-card a:hover {
-  transform: scale(1.05);
+  background-color: #4752c4;
 }
 
 div.App {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: white;
+  color: #282c34;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px 100px 20px;  /* More breathing room */
+  text-align: center;
+  min-height: 100vh;  /* Takes full viewport height */
+  justify-content: center;
+}
+
+.hero-section h1 {
+  margin: 30px 0 15px 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #b0b0b0;
+  font-weight: 300;
+}
+
+.about-section, .journey-section, .projects-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.about-section h2, .journey-section h2, .projects-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.about-section p, .journey-section p {
+  font-size: 1.15rem;
+  line-height: 1.8;  /* More readable */
+  color: #d0d0d0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #61dafb;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #61dafb;
+}
+
+.social-icon {
+  width: 27px;
+  height: 27px;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
 }
