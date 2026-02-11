@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
+html, body {
+  background-color: #001428;
+  margin: 0;
+  padding: 0;
+}
+
+
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #2b2d33 0%, #bebebe 100%);
+  background: linear-gradient(180deg, #001428 0%, #002a50 50%, #003366 100%);
+  background-attachment: fixed;
   padding: 0;
 }
 
@@ -126,10 +134,12 @@ div.App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 20px 100px 20px;  /* More breathing room */
+  padding: 80px 20px 0px 20px;
   text-align: center;
-  min-height: 100vh;  /* Takes full viewport height */
+  min-height: auto;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-section h1 {
@@ -229,4 +239,173 @@ div.App {
 
 .social-icon:hover {
   opacity: 0.7;
+}
+
+.bubble-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Empty floating bubbles */
+.empty-bubble {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  animation: floatUp 6s infinite ease-in;
+}
+
+.bubble-0 { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+.bubble-1 { width: 35px; height: 35px; left: 20%; animation-delay: 1s; }
+.bubble-2 { width: 15px; height: 15px; left: 35%; animation-delay: 2s; }
+.bubble-3 { width: 25px; height: 25px; left: 50%; animation-delay: 0.5s; }
+.bubble-4 { width: 40px; height: 40px; left: 65%; animation-delay: 1.5s; }
+.bubble-5 { width: 18px; height: 18px; left: 75%; animation-delay: 3s; }
+.bubble-6 { width: 30px; height: 30px; left: 85%; animation-delay: 2.5s; }
+.bubble-7 { width: 22px; height: 22px; left: 90%; animation-delay: 4s; }
+.bubble-8 { width: 12px; height: 12px; left: 45%; animation-delay: 3.5s; }
+.bubble-9 { width: 28px; height: 28px; left: 55%; animation-delay: 1s; }
+
+@keyframes floatUp {
+  0% { bottom: -50px; opacity: 0; }
+  20% { opacity: 1; }
+  100% { bottom: 110%; opacity: 0; }
+}
+
+/* Logo bubbles */
+.logo-bubble {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bob 4s infinite ease-in-out;
+  animation-delay: calc(var(--i) * 0.5s);
+  left: calc(10% + (var(--i) * 10%));
+  top: calc(20% + (var(--i) * 8%));
+  transition: all 0.8s ease;
+  backdrop-filter: blur(5px);
+}
+
+.logo-bubble img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Snapped state */
+.logo-bubble.snapped {
+  cursor: pointer;
+  animation: none;
+  transition: top 0.6s ease, left 0.6s ease;
+}
+
+.logo-bubble.snapped:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Info box */
+.info-box {
+  position: absolute;
+  left: 160px;
+  top: 5%;
+  width: calc(100% - 180px);
+  height: 90%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 50px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.4s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-box h3 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.info-box p {
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Active bubble highlight */
+.logo-bubble.snapped.active-bubble {
+  border: 2px solid rgba(100, 200, 255, 0.9);
+  box-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
+  background: rgba(100, 200, 255, 0.15);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(200px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.nav-profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.5s ease;
+  margin-right: 10px;
+}
+
+.nav-profile-pic.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.profile-pic.hidden {
+  opacity: 0;
+  transform: scale(0.5) translateY(-50px);
+  transition: all 0.5s ease;
+}
+
+.profile-pic {
+  transition: all 0.5s ease;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
 }
